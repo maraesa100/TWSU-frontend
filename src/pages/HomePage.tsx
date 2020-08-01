@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React from 'react'
 
+import AxiosRequests from '../funcs/AxiosRequests'
+
 type MyProps = {}
 type MyState = { formValue: string; debugging: string }
 
@@ -8,41 +10,44 @@ class HomePage extends React.Component<MyProps, MyState> {
   constructor(props: any) {
     super(props)
     this.state = {
-      formValue: 'string',
+      formValue: '',
       debugging: 'I AM DEBUGGING'
     }
   }
 
-  handleChange(event: any) {
+  handleChange = (event: any) => {
+    // console.log('DEBUGGING' + event.target.value)
     this.setState({ formValue: event.target.value })
   }
 
   handleSubmit(event: any) {
-    alert('A name was submitted: ' + this.state.formValue)
+    console.log('A name was submitted: ' + this.state.formValue)
+    // AxiosRequests(this.state.formValue)
     event.preventDefault()
   }
 
   componentDidMount() {
     console.log(this.state.debugging)
-    axios
-      .post('http://localhost:5000/api/v1/wordfilter', {
-        name: 'frontend test happy request',
-        description: 'happy happy sad joy sad'
-      })
-      .then(response => {
-        console.log('Post successful!')
-        console.log(response)
-      })
-      .catch(error => {
-        if (error.response.status === 409) {
-          alert('Doggie with same name exists!')
-        } else {
-          alert('Unknown error.')
-        }
-      })
+    AxiosRequests('I am so sad')
   }
+
   render() {
-    return <h1>Welcome to the Rocket Launcher App</h1>
+    return (
+      <div>
+        <h1>Welcome to the Rocket Launcher App</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input
+              type='text'
+              value={this.state.formValue}
+              onChange={this.handleChange}
+            />
+          </label>
+          <input type='submit' value='Submit' />
+        </form>
+      </div>
+    )
   }
 }
 export default HomePage
