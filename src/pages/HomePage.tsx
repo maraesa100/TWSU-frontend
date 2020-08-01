@@ -11,7 +11,7 @@ class HomePage extends React.Component<MyProps, MyState> {
     super(props)
     this.state = {
       formValue: '',
-      debugging: 'I AM DEBUGGING'
+      debugging: 'COMPONENT DID MOUNT'
     }
   }
 
