@@ -12,6 +12,16 @@ class HomePage extends React.Component<MyProps, MyState> {
       debugging: 'I AM DEBUGGING'
     }
   }
+
+  handleChange(event: any) {
+    this.setState({ formValue: event.target.value })
+  }
+
+  handleSubmit(event: any) {
+    alert('A name was submitted: ' + this.state.formValue)
+    event.preventDefault()
+  }
+
   componentDidMount() {
     console.log(this.state.debugging)
     axios
