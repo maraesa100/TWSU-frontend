@@ -1,8 +1,19 @@
 import axios from 'axios'
 import React from 'react'
 
-class HomePage extends React.Component {
+type MyProps = {}
+type MyState = { formValue: string; debugging: string }
+
+class HomePage extends React.Component<MyProps, MyState> {
+  constructor(props: any) {
+    super(props)
+    this.state = {
+      formValue: 'string',
+      debugging: 'I AM DEBUGGING'
+    }
+  }
   componentDidMount() {
+    console.log(this.state.debugging)
     axios
       .post('http://localhost:5000/api/v1/wordfilter', {
         name: 'frontend test happy request',
