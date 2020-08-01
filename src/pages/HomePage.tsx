@@ -21,7 +21,7 @@ class HomePage extends React.Component<MyProps, MyState> {
 
   handleSubmit(event: any) {
     console.log('The rocket launcher was submitted: ' + this.state.formValue)
-    const axiosValue = axios
+    axios
       .post('http://localhost:5000/api/v1/wordfilter', {
         name: 'happyOrSad request',
         description: this.state.formValue
@@ -29,6 +29,10 @@ class HomePage extends React.Component<MyProps, MyState> {
       .then(response => {
         console.log('Post successful!')
         console.log(response)
+        this.setState({
+          happyOrSad: response.data.returnedValue.happyOrSad,
+          numericalValue: response.data.returnedValue.numericalValue
+        })
         return response
       })
       .catch(error => {
@@ -39,8 +43,6 @@ class HomePage extends React.Component<MyProps, MyState> {
         //   }
         return error
       })
-
-    console.log('NEW DEBUGGING' + axiosValue)
 
     // this.setState({happyOrSad: axiosValue.returnedValue,
     //     numericalValue: 0})
@@ -57,6 +59,21 @@ class HomePage extends React.Component<MyProps, MyState> {
     return (
       <div>
         <h1>Welcome to the Rocket Launcher App</h1>
+        <h2>
+          This rocket runs on happy words, so enter a sentence and get
+          launching!
+        </h2>
+        <ol>
+          <li>Enter a sentence</li>
+          <li>
+            Hit the 'test' button to check whether your rocket has enough happy
+            words to launch
+          </li>
+          <li>
+            If there are enough happy words, the launch button will activate and
+            you will be able to launch your rocket
+          </li>
+        </ol>
         <form onSubmit={e => this.handleSubmit(e)}>
           <label>
             Name:
@@ -72,6 +89,42 @@ class HomePage extends React.Component<MyProps, MyState> {
             disabled={this.state.formValue.length < 1}
           />
         </form>
+
+        <button
+          disabled={this.state.happyOrSad !== 'happy'}
+          onClick={() => console.log('launched')}
+        >
+          LAUNCH
+        </button>
+
+        <p>
+          Your words are: {this.state.happyOrSad}{' '}
+          {this.state.happyOrSad === null ? 'unknown' : null}
+        </p>
+        <p>
+          Sentences are considered happy if they contain 50% more happy words
+          than sad words
+        </p>
+        <p>
+          Sentences are considered sad if they contain 50% more sad words than
+          happy words
+        </p>
+        <p>
+          Sentences are considered 'unknown' if they contain any other variety
+          of words
+        </p>
+
+        <h2>Happy Words</h2>
+
+        <h2>Sad Words</h2>
+
+        <h3>For Parents</h3>
+        <p>
+          This tool teaches your child a scientific trial and error process.
+          They are encouraged to try various sentences, use the 'test' button to
+          validate their work, and then once validated they can rest assured
+          that their rocket will launch
+        </p>
       </div>
     )
   }
