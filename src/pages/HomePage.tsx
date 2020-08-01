@@ -3,16 +3,6 @@ import React from 'react'
 
 class HomePage extends React.Component {
   componentDidMount() {
-    // console.log()
-    // const apiUrl = 'http://localhost:5000/api/v1/wordfilter'
-    // fetch(apiUrl).then(response => console.log(response))
-    // .then(response => response.json())
-    // .then(data => console.log('This is your data', data))
-    console.log('react component mounted')
-    axios.get('http://localhost:5000/').then(response => {
-      console.log(response.data)
-    })
-
     axios
       .post('http://localhost:5000/api/v1/wordfilter', {
         name: 'frontend test happy request',
@@ -31,7 +21,7 @@ class HomePage extends React.Component {
       })
   }
   render() {
-    return <h1>my Component has Mounted, Check the browser 'console' </h1>
+    return <h1>Welcome to the Rocket Launcher App</h1>
   }
 }
 export default HomePage
