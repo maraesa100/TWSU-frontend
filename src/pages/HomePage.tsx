@@ -35,7 +35,7 @@ class HomePage extends React.Component<MyProps, MyState> {
     return (
       <div>
         <h1>Welcome to the Rocket Launcher App</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={e => this.handleSubmit(e)}>
           <label>
             Name:
             <input
