@@ -1,9 +1,14 @@
 import axios from 'axios'
 import React from 'react'
-import { string } from 'prop-types'
+// import { string } from 'prop-types'
 
 type MyProps = {}
-type MyState = { formValue: string; happyOrSad: any; numericalValue: number }
+type MyState = {
+  formValue: string
+  happyOrSad: any
+  numericalValue: number
+  willRocketLaunch: boolean
+}
 
 class HomePage extends React.Component<MyProps, MyState> {
   constructor(props: any) {
@@ -11,7 +16,8 @@ class HomePage extends React.Component<MyProps, MyState> {
     this.state = {
       formValue: '',
       happyOrSad: null,
-      numericalValue: 0
+      numericalValue: 0,
+      willRocketLaunch: false
     }
   }
 
@@ -20,7 +26,15 @@ class HomePage extends React.Component<MyProps, MyState> {
   }
 
   handleSubmit(event: any) {
+    // set the willRocketLaunch back to defaults to prevent false positives
+    this.setState({
+      willRocketLaunch: false
+    })
+
+    // logging for debugger
     console.log('The rocket launcher was submitted: ' + this.state.formValue)
+
+    // post axios request
     axios
       .post('http://localhost:5000/api/v1/wordfilter', {
         name: 'happyOrSad request',
@@ -31,7 +45,8 @@ class HomePage extends React.Component<MyProps, MyState> {
         console.log(response)
         this.setState({
           happyOrSad: response.data.returnedValue.happyOrSad,
-          numericalValue: response.data.returnedValue.numericalValue
+          numericalValue: response.data.returnedValue.numericalValue,
+          willRocketLaunch: true
         })
         return response
       })
@@ -41,6 +56,9 @@ class HomePage extends React.Component<MyProps, MyState> {
         //   } else {
         //     alert('Unknown error.')
         //   }
+        this.setState({
+          willRocketLaunch: false
+        })
         return error
       })
 
@@ -63,6 +81,7 @@ class HomePage extends React.Component<MyProps, MyState> {
           This rocket runs on happy words, so enter a sentence and get
           launching!
         </h2>
+        <h3>Instructions</h3>
         <ol>
           <li>Enter a sentence</li>
           <li>
@@ -74,9 +93,11 @@ class HomePage extends React.Component<MyProps, MyState> {
             you will be able to launch your rocket
           </li>
         </ol>
+        <h3>Rocket Launcher</h3>
+
         <form onSubmit={e => this.handleSubmit(e)}>
           <label>
-            Name:
+            Enter Fuel:
             <input
               type='text'
               value={this.state.formValue}
@@ -85,16 +106,16 @@ class HomePage extends React.Component<MyProps, MyState> {
           </label>
           <input
             type='submit'
-            value='Submit'
+            value='Test'
             disabled={this.state.formValue.length < 1}
           />
         </form>
 
         <button
-          disabled={this.state.happyOrSad !== 'happy'}
+          disabled={!this.state.willRocketLaunch}
           onClick={() => console.log('launched')}
         >
-          LAUNCH
+          LAUNCH!!
         </button>
 
         <p>
