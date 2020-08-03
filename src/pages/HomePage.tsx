@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React from 'react'
 // import { string } from 'prop-types'
+// import Container from '@material-ui/core/Container'
+import RocketLaunch from '../components/RocketLaunch'
 
 type MyProps = {}
 type MyState = {
@@ -25,16 +27,7 @@ class HomePage extends React.Component<MyProps, MyState> {
     this.setState({ formValue: event.target.value })
   }
 
-  handleSubmit(event: any) {
-    // set the willRocketLaunch back to defaults to prevent false positives
-    this.setState({
-      willRocketLaunch: false
-    })
-
-    // logging for debugger
-    console.log('The rocket launcher was submitted: ' + this.state.formValue)
-
-    // post axios request
+  rocketTest() {
     axios
       .post('http://localhost:5000/api/v1/wordfilter', {
         name: 'happyOrSad request',
@@ -60,27 +53,30 @@ class HomePage extends React.Component<MyProps, MyState> {
         return response
       })
       .catch(error => {
-        //   if (error.response.status === 409) {
-        //     alert('throwing error exists!')
-        //   } else {
-        //     alert('Unknown error.')
-        //   }
         this.setState({
           willRocketLaunch: false
         })
         return error
       })
+  }
 
-    // this.setState({happyOrSad: axiosValue.returnedValue,
-    //     numericalValue: 0})
+  handleSubmit(event: any) {
+    // set the willRocketLaunch back to defaults to prevent false positives
+    this.setState({
+      willRocketLaunch: false
+    })
+
+    // logging for debugger
+    console.log('The rocket launcher was submitted: ' + this.state.formValue)
+
+    // post axios request
+
+    this.rocketTest()
 
     event.preventDefault()
   }
 
-  componentDidMount() {
-    // console.log(this.state.debugging)
-    // AxiosRequests('I am so sad')
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -102,7 +98,8 @@ class HomePage extends React.Component<MyProps, MyState> {
             you will be able to launch your rocket
           </li>
         </ol>
-        <h3>Rocket Launcher</h3>
+        <RocketLaunch onTextChange={() => console.log('something changed')} />
+        {/* <h3>Rocket Launcher</h3>
 
         <form onSubmit={e => this.handleSubmit(e)}>
           <label>
@@ -125,7 +122,7 @@ class HomePage extends React.Component<MyProps, MyState> {
           onClick={() => console.log('launched')}
         >
           LAUNCH!!
-        </button>
+        </button> */}
 
         <p>
           Your words are: {this.state.happyOrSad}{' '}
