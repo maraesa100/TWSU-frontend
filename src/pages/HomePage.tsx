@@ -7,6 +7,8 @@ import RocketLaunch from '../components/RocketLaunch'
 import Title from '../components/Title'
 import PowerComponent from '../components/PowerComponent'
 import MenuBar from '../components/MenuBar'
+import ProgressBar from '../components/ProgressBar'
+import WordInstructions from '../components/WordInstructions'
 
 // Material UI imports
 import Container from '@material-ui/core/Container'
@@ -100,6 +102,12 @@ class HomePage extends React.Component<MyProps, MyState> {
             <Title title='Are you ready?' />
 
             <PowerComponent borderStyleActive />
+
+            <Title title='How it works' />
+
+            <ProgressBar amountOfProgress={33} stepNumber={1} />
+
+            <WordInstructions />
 
             <RocketLaunch
               onSubmit={e => this.handleSubmit(e)}
