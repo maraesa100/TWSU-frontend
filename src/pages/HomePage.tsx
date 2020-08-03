@@ -2,12 +2,33 @@ import axios from 'axios'
 import React from 'react'
 // import { string } from 'prop-types'
 
+// Bespoke Component Imports
+import RocketLaunch from '../components/RocketLaunch'
+import Title from '../components/Title'
+import PowerComponent from '../components/PowerComponent'
+import MenuBar from '../components/MenuBar'
+import ProgressBar from '../components/ProgressBar'
+import StepOneInstructions from '../components/StepOneInstructions'
+import StepTwoInstructions from '../components/StepTwoInstructions'
+import StepThreeInstructions from '../components/StepThreeInstructions'
+import SliderFeedback from '../components/SliderFeedback'
+import WordClassifier from '../components/WordClassifier'
+import Image from 'react-bootstrap/Image'
+
+// Material UI imports
+import Container from '@material-ui/core/Container'
+
+// Bootstrap imports
+
+import Navbar from 'react-bootstrap/Navbar'
+
 type MyProps = {}
 type MyState = {
   formValue: string
   happyOrSad: any
   numericalValue: number
   willRocketLaunch: boolean
+  firedRocketAlready: boolean
 }
 
 class HomePage extends React.Component<MyProps, MyState> {
@@ -15,9 +36,10 @@ class HomePage extends React.Component<MyProps, MyState> {
     super(props)
     this.state = {
       formValue: '',
-      happyOrSad: null,
+      happyOrSad: 'unknown',
       numericalValue: 0,
-      willRocketLaunch: false
+      willRocketLaunch: false,
+      firedRocketAlready: false
     }
   }
 
@@ -25,16 +47,11 @@ class HomePage extends React.Component<MyProps, MyState> {
     this.setState({ formValue: event.target.value })
   }
 
-  handleSubmit(event: any) {
-    // set the willRocketLaunch back to defaults to prevent false positives
-    this.setState({
-      willRocketLaunch: false
-    })
+  fireRocket = (event: any) => {
+    this.setState({ firedRocketAlready: true })
+  }
 
-    // logging for debugger
-    console.log('The rocket launcher was submitted: ' + this.state.formValue)
-
-    // post axios request
+  rocketTest() {
     axios
       .post('http://localhost:5000/api/v1/wordfilter', {
         name: 'happyOrSad request',
@@ -60,101 +77,87 @@ class HomePage extends React.Component<MyProps, MyState> {
         return response
       })
       .catch(error => {
-        //   if (error.response.status === 409) {
-        //     alert('throwing error exists!')
-        //   } else {
-        //     alert('Unknown error.')
-        //   }
         this.setState({
           willRocketLaunch: false
         })
         return error
       })
+  }
 
-    // this.setState({happyOrSad: axiosValue.returnedValue,
-    //     numericalValue: 0})
+  handleSubmit(event: any) {
+    // set the willRocketLaunch back to defaults to prevent false positives
+    this.setState({
+      willRocketLaunch: false
+    })
+
+    // logging for debugger
+    console.log('The rocket launcher was submitted: ' + this.state.formValue)
+
+    // post axios request
+
+    this.rocketTest()
 
     event.preventDefault()
   }
 
-  componentDidMount() {
-    // console.log(this.state.debugging)
-    // AxiosRequests('I am so sad')
-  }
+  componentDidMount() {}
 
   render() {
     return (
-      <div>
-        <h1>Welcome to the Rocket Launcher App</h1>
-        <h2>
-          This rocket runs on happy words, so enter a sentence and get
-          launching!
-        </h2>
-        <h3>Instructions</h3>
-        <ol>
-          <li>Enter a sentence</li>
-          <li>
-            Hit the 'test' button to check whether your rocket has enough happy
-            words to launch
-          </li>
-          <li>
-            If there are enough happy words, the launch button will activate and
-            you will be able to launch your rocket
-          </li>
-        </ol>
-        <h3>Rocket Launcher</h3>
+      <div style={{ backgroundColor: '#0077FF' }}>
+        <MenuBar />
 
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <label>
-            Enter Fuel:
-            <input
-              type='text'
-              value={this.state.formValue}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input
-            type='submit'
-            value='Test'
-            disabled={this.state.formValue.length < 1}
+        {/* top content container - slighty narrower than launch container */}
+        <Container maxWidth='sm'>
+          <Container style={{ padding: 50 }}>
+            <Title title='Are you ready?' />
+
+            <PowerComponent borderStyleActive />
+
+            <Title title='How it works' />
+
+            <ProgressBar amountOfProgress={33} stepNumber={1} />
+
+            <StepOneInstructions />
+
+            <ProgressBar amountOfProgress={66} stepNumber={2} />
+
+            <StepTwoInstructions />
+
+            <ProgressBar amountOfProgress={100} stepNumber={3} />
+
+            <StepThreeInstructions />
+          </Container>
+        </Container>
+        <Container maxWidth='sm' style={{ backgroundColor: '#F9C000' }}>
+          <Title title='ROCKET LAUNCHER' color='black' />
+
+          <RocketLaunch
+            onSubmit={e => this.handleSubmit(e)}
+            formValue={this.state.formValue}
+            handleChange={e => this.handleChange(e)}
+            willRocketLaunch={this.state.willRocketLaunch}
+            fireRocket={e => this.fireRocket(e)}
+            firedRocketAlready={this.state.firedRocketAlready}
           />
-        </form>
 
-        <button
-          disabled={!this.state.willRocketLaunch}
-          onClick={() => console.log('launched')}
-        >
-          LAUNCH!!
-        </button>
+          <SliderFeedback
+            sliderValue={
+              this.state.happyOrSad === 'happy' ? this.state.numericalValue : 0
+            }
+            sliderLabel={'How Happy?'}
+          />
 
-        <p>
-          Your words are: {this.state.happyOrSad}{' '}
-          {this.state.happyOrSad === null ? 'unknown' : null}
-        </p>
-        <p>
-          Sentences are considered happy if they contain 50% more happy words
-          than sad words
-        </p>
-        <p>
-          Sentences are considered sad if they contain 50% more sad words than
-          happy words
-        </p>
-        <p>
-          Sentences are considered 'unknown' if they contain any other variety
-          of words
-        </p>
+          <SliderFeedback
+            sliderValue={
+              this.state.happyOrSad === 'sad' ? this.state.numericalValue : 0
+            }
+            sliderLabel={'How Sad?'}
+          />
 
-        <h2>Happy Words</h2>
-
-        <h2>Sad Words</h2>
-
-        <h3>For Parents</h3>
-        <p>
-          This tool teaches your child a scientific trial and error process.
-          They are encouraged to try various sentences, use the 'test' button to
-          validate their work, and then once validated they can rest assured
-          that their rocket will launch
-        </p>
+          <WordClassifier category={this.state.happyOrSad} />
+          <div style={{ paddingBottom: 100 }} />
+        </Container>
       </div>
     )
   }
