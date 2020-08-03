@@ -1,22 +1,35 @@
 import * as React from 'react'
 
 interface RocketLaunchProps {
-  onTextChange: (text: string) => void
-  Image?: string
-  Body?: string
+  onSubmit: (text: any) => void
+  formValue: string
+  handleChange: (text: any) => void
+  willRocketLaunch: boolean
 }
 
 export const RocketLaunch: React.FC<RocketLaunchProps> = ({
-  onTextChange,
-  Image,
-  Body
+  onSubmit,
+  formValue,
+  handleChange,
+  willRocketLaunch
 }) => (
   <div className='RocketLaunch'>
-    <div className='title'>{onTextChange}</div>
-    <div className='image'>
-      <img src={Image} />
-    </div>
-    <div className='body'>{Body}</div>
+    <h3>Rocket Launcher</h3>
+
+    <form onSubmit={e => onSubmit(e)}>
+      <label>
+        Enter Fuel:
+        <input type='text' value={formValue} onChange={e => handleChange(e)} />
+      </label>
+      <input type='submit' value='Test' disabled={formValue.length < 1} />
+    </form>
+
+    <button
+      disabled={!willRocketLaunch}
+      onClick={() => console.log('launched')}
+    >
+      LAUNCH!!
+    </button>
   </div>
 )
 

@@ -3,6 +3,7 @@ import React from 'react'
 // import { string } from 'prop-types'
 // import Container from '@material-ui/core/Container'
 import RocketLaunch from '../components/RocketLaunch'
+import { thisExpression } from '@babel/types'
 
 type MyProps = {}
 type MyState = {
@@ -98,7 +99,12 @@ class HomePage extends React.Component<MyProps, MyState> {
             you will be able to launch your rocket
           </li>
         </ol>
-        <RocketLaunch onTextChange={() => console.log('something changed')} />
+        <RocketLaunch
+          onSubmit={e => this.handleSubmit(e)}
+          formValue={this.state.formValue}
+          handleChange={e => this.handleChange(e)}
+          willRocketLaunch={this.state.willRocketLaunch}
+        />
         {/* <h3>Rocket Launcher</h3>
 
         <form onSubmit={e => this.handleSubmit(e)}>
