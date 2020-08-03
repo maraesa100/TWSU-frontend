@@ -18,8 +18,8 @@ let happyArray = [
 ]
 let sadArray = ['disappointed', 'miserable', 'sad', 'sorrow', 'unhappy']
 
-interface WordInstructionsProps {}
-export const WordInstructions: React.FC = ({}) => (
+interface StepOneInstructionsProps {}
+export const StepOneInstructions: React.FC = ({}) => (
   <Container
     style={{
       backgroundColor: '#F3F4FB',
@@ -59,4 +59,4 @@ export const WordInstructions: React.FC = ({}) => (
   </Container>
 )
 
-export default WordInstructions
+export default StepOneInstructions

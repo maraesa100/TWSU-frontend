@@ -8,7 +8,7 @@ import Title from '../components/Title'
 import PowerComponent from '../components/PowerComponent'
 import MenuBar from '../components/MenuBar'
 import ProgressBar from '../components/ProgressBar'
-import WordInstructions from '../components/WordInstructions'
+import StepOneInstructions from '../components/StepOneInstructions'
 import StepTwoInstructions from '../components/StepTwoInstructions'
 
 // Material UI imports
@@ -108,7 +108,7 @@ class HomePage extends React.Component<MyProps, MyState> {
 
             <ProgressBar amountOfProgress={33} stepNumber={1} />
 
-            <WordInstructions />
+            <StepOneInstructions />
 
             <ProgressBar amountOfProgress={66} stepNumber={2} />
 
