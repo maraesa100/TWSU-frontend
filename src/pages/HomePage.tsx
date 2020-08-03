@@ -2,10 +2,10 @@ import axios from 'axios'
 import React from 'react'
 // import { string } from 'prop-types'
 
-// Component Imports
+// Bespoke Component Imports
 import RocketLaunch from '../components/RocketLaunch'
-// import MenuBar from '../components/MenuBar'
 import Title from '../components/Title'
+import PowerComponent from '../components/PowerComponent'
 
 // Material UI imports
 import Container from '@material-ui/core/Container'
@@ -108,8 +108,28 @@ class HomePage extends React.Component<MyProps, MyState> {
 
           <Navbar.Brand href='#home'>Help</Navbar.Brand>
         </Navbar>
+
+        {/* top content container - slighty narrower than launch container */}
         <Container maxWidth='sm'>
-          <Title title='Are you ready?' />
+          <Container style={{ padding: 50 }}>
+            <Title title='Are you ready?' />
+
+            <PowerComponent borderStyleActive />
+
+            <RocketLaunch
+              onSubmit={e => this.handleSubmit(e)}
+              formValue={this.state.formValue}
+              handleChange={e => this.handleChange(e)}
+              willRocketLaunch={this.state.willRocketLaunch}
+            />
+            <p>
+              Your words are: {this.state.happyOrSad}{' '}
+              {this.state.happyOrSad === null ? 'unknown' : null}
+            </p>
+          </Container>
+        </Container>
+        <Container maxWidth='sm' style={{ backgroundColor: '#F9C000' }}>
+          <Title title='Placeholder' />
 
           <RocketLaunch
             onSubmit={e => this.handleSubmit(e)}
