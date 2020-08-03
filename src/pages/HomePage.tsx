@@ -4,7 +4,7 @@ import React from 'react'
 
 // Component Imports
 import RocketLaunch from '../components/RocketLaunch'
-import TitleBar from '../components/TitleBar'
+import MenuBar from '../components/MenuBar'
 import Title from '../components/Title'
 
 // Material UI imports
@@ -111,7 +111,7 @@ class HomePage extends React.Component<MyProps, MyState> {
         </Navbar>
 
         <Container maxWidth='sm'>
-          <TitleBar />
+          <MenuBar />
           <RocketLaunch
             onSubmit={e => this.handleSubmit(e)}
             formValue={this.state.formValue}
