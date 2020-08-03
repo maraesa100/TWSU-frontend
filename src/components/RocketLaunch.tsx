@@ -11,7 +11,7 @@ interface RocketLaunchProps {
   handleChange: (text: any) => void
   willRocketLaunch: boolean
   fireRocket: (text: any) => void
-
+  firedRocketAlready: boolean
   // fireRocket: boolean
 }
 
@@ -20,7 +20,8 @@ export const RocketLaunch: React.FC<RocketLaunchProps> = ({
   formValue,
   handleChange,
   willRocketLaunch,
-  fireRocket
+  fireRocket,
+  firedRocketAlready
 }) => (
   <Container>
     <Row>
@@ -53,14 +54,6 @@ export const RocketLaunch: React.FC<RocketLaunchProps> = ({
           TEST
         </Button>
 
-        <Image
-          src={require('../ui/rocket-launch.gif')}
-          rounded
-          fluid
-          style={{ paddingTop: 40, width: '100%' }}
-          // hidden={fireRocket}
-        />
-
         <Button
           disabled={!willRocketLaunch}
           onClick={e => fireRocket(e)}
@@ -69,6 +62,16 @@ export const RocketLaunch: React.FC<RocketLaunchProps> = ({
         >
           LAUNCH
         </Button>
+
+        <div hidden={!firedRocketAlready}>
+          <Image
+            src={require('../ui/rocket-launch.gif')}
+            rounded
+            fluid
+            style={{ paddingTop: 40, width: '100%' }}
+          />
+          <h2>SUCCESS!!!!!</h2>
+        </div>
       </Col>
     </Row>
   </Container>

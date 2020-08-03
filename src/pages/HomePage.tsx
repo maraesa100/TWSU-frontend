@@ -138,6 +138,7 @@ class HomePage extends React.Component<MyProps, MyState> {
             handleChange={e => this.handleChange(e)}
             willRocketLaunch={this.state.willRocketLaunch}
             fireRocket={e => this.fireRocket(e)}
+            firedRocketAlready={this.state.firedRocketAlready}
           />
 
           <SliderFeedback
@@ -155,6 +156,7 @@ class HomePage extends React.Component<MyProps, MyState> {
           />
 
           <WordClassifier category={this.state.happyOrSad} />
+          <div style={{ paddingBottom: 100 }} />
         </Container>
       </div>
     )
