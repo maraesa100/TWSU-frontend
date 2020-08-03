@@ -114,22 +114,12 @@ class HomePage extends React.Component<MyProps, MyState> {
             <ProgressBar amountOfProgress={66} stepNumber={2} />
 
             <StepTwoInstructions />
-            <StepThreeInstructions />
 
-            <RocketLaunch
-              onSubmit={e => this.handleSubmit(e)}
-              formValue={this.state.formValue}
-              handleChange={e => this.handleChange(e)}
-              willRocketLaunch={this.state.willRocketLaunch}
-            />
-            <p>
-              Your words are: {this.state.happyOrSad}{' '}
-              {this.state.happyOrSad === null ? 'unknown' : null}
-            </p>
+            <StepThreeInstructions />
           </Container>
         </Container>
         <Container maxWidth='sm' style={{ backgroundColor: '#F9C000' }}>
-          <Title title='Placeholder' />
+          <Title title='ROCKET LAUNCHER' color='black' />
 
           <RocketLaunch
             onSubmit={e => this.handleSubmit(e)}
