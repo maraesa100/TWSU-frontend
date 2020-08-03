@@ -13,6 +13,7 @@ import StepTwoInstructions from '../components/StepTwoInstructions'
 import StepThreeInstructions from '../components/StepThreeInstructions'
 import SliderFeedback from '../components/SliderFeedback'
 import WordClassifier from '../components/WordClassifier'
+import Image from 'react-bootstrap/Image'
 
 // Material UI imports
 import Container from '@material-ui/core/Container'
@@ -27,6 +28,7 @@ type MyState = {
   happyOrSad: any
   numericalValue: number
   willRocketLaunch: boolean
+  handleRocketLaunch: boolean
 }
 
 class HomePage extends React.Component<MyProps, MyState> {
@@ -36,12 +38,17 @@ class HomePage extends React.Component<MyProps, MyState> {
       formValue: '',
       happyOrSad: 'unknown',
       numericalValue: 0,
-      willRocketLaunch: false
+      willRocketLaunch: false,
+      handleRocketLaunch: false
     }
   }
 
   handleChange = (event: any) => {
     this.setState({ formValue: event.target.value })
+  }
+
+  handleRocketLaunch = () => {
+    this.setState({ handleRocketLaunch: true })
   }
 
   rocketTest() {
@@ -130,6 +137,7 @@ class HomePage extends React.Component<MyProps, MyState> {
             formValue={this.state.formValue}
             handleChange={e => this.handleChange(e)}
             willRocketLaunch={this.state.willRocketLaunch}
+            // handleRocketLaunch={() => this.handleRocketLaunch()}
           />
 
           <SliderFeedback

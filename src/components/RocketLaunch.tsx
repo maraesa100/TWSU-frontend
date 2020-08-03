@@ -10,6 +10,7 @@ interface RocketLaunchProps {
   formValue: string
   handleChange: (text: any) => void
   willRocketLaunch: boolean
+  // hasRocketLaunched: boolean
 }
 
 export const RocketLaunch: React.FC<RocketLaunchProps> = ({
@@ -56,6 +57,14 @@ export const RocketLaunch: React.FC<RocketLaunchProps> = ({
         >
           LAUNCH
         </Button>
+
+        <Image
+          src={require('../ui/rocket-launch.gif')}
+          rounded
+          fluid
+          style={{ paddingTop: 40, width: '100%' }}
+          // hidden={}
+        />
       </Col>
     </Row>
   </Container>
