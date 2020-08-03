@@ -1,12 +1,13 @@
 import React from 'react'
-// import logo from './logo.svg'
+
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import HomePage from './pages/HomePage'
-// import { thisExpression } from '@babel/types'
 
 function App() {
   return (
-    <div className='App'>
+    <div>
       <HomePage />
     </div>
   )
