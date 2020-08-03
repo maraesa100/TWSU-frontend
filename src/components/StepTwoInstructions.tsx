@@ -61,7 +61,7 @@ export const StepTwoInstructions: React.FC = ({}) => (
         </p>
       </Col>
 
-      <Col xs={12} md={12}>
+      <Col xs={12} md={12} style={{ padding: 30 }}>
         <p>
           If you have any other combination of happy and sad words, the
           engineers will say that your fuel is 'unknown'. Make sure you try

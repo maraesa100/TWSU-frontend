@@ -115,6 +115,8 @@ class HomePage extends React.Component<MyProps, MyState> {
 
             <StepTwoInstructions />
 
+            <ProgressBar amountOfProgress={100} stepNumber={3} />
+
             <StepThreeInstructions />
           </Container>
         </Container>

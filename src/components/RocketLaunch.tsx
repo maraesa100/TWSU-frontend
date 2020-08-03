@@ -18,41 +18,40 @@ export const RocketLaunch: React.FC<RocketLaunchProps> = ({
   handleChange,
   willRocketLaunch
 }) => (
-  <Container
-    style={{
-      backgroundColor: '#F9C000',
-      paddingTop: 20,
-      paddingBottom: 20
-    }}
-  >
+  <Container>
     <Row>
-      <Col xs={12} md={8}>
+      <Col xs={12} md={12}>
+        <h3>Please Enter Your 'Fuel'</h3>
+      </Col>
+      <div style={{ paddingTop: 50 }} />
+      <Col xs={12} md={8} style={{ paddingTop: 25 }}>
         <form onSubmit={e => onSubmit(e)}>
-          <label>
-            Enter Fuel:
-            <input
-              type='text'
-              value={formValue}
-              onChange={e => handleChange(e)}
-            />
-          </label>
+          <input
+            type='text'
+            value={formValue}
+            onChange={e => handleChange(e)}
+            placeholder='Please enter text'
+          />
         </form>
       </Col>
 
-      <Col xs={12} md={4}>
+      <Col xs={12} md={4} style={{ paddingTop: 25 }}>
         <Button
           onClick={e => onSubmit(e)}
           disabled={formValue.length < 1}
           variant='danger'
+          style={{ margin: 5 }}
         >
           TEST
         </Button>
-        <button
+        <Button
           disabled={!willRocketLaunch}
           onClick={() => console.log('launched')}
+          variant='success'
+          style={{ margin: 5 }}
         >
-          LAUNCH!!
-        </button>
+          LAUNCH
+        </Button>
       </Col>
     </Row>
   </Container>
