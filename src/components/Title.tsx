@@ -5,7 +5,21 @@ interface TitleProps {
 }
 
 export const Title: React.FC<TitleProps> = ({ title }) => (
-  <h1 className='level-1-title'>{title}</h1>
+  <div
+    style={{
+      paddingTop: 50,
+      paddingBottom: 50
+    }}
+  >
+    <h1
+      style={{
+        textAlign: 'center',
+        color: '#F9F9F9'
+      }}
+    >
+      {title}
+    </h1>
+  </div>
 )
 
 export default Title

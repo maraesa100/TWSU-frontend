@@ -4,7 +4,7 @@ import React from 'react'
 
 // Component Imports
 import RocketLaunch from '../components/RocketLaunch'
-import MenuBar from '../components/MenuBar'
+// import MenuBar from '../components/MenuBar'
 import Title from '../components/Title'
 
 // Material UI imports
@@ -13,7 +13,6 @@ import Container from '@material-ui/core/Container'
 // Bootstrap imports
 
 import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
 
 type MyProps = {}
 type MyState = {
@@ -91,7 +90,7 @@ class HomePage extends React.Component<MyProps, MyState> {
 
   render() {
     return (
-      <div>
+      <div style={{ backgroundColor: '#0077FF' }}>
         <Navbar className='color-nav justify-content-between'>
           <Navbar.Brand href='#home'>TWSU</Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -103,15 +102,15 @@ class HomePage extends React.Component<MyProps, MyState> {
               width='30'
               height='30'
               className='d-inline-block align-top'
-            />{' '}
+            />
             ROCKET LAUNCHER
           </Navbar.Brand>
 
           <Navbar.Brand href='#home'>Help</Navbar.Brand>
         </Navbar>
-
         <Container maxWidth='sm'>
-          <MenuBar />
+          <Title title='Are you ready?' />
+
           <RocketLaunch
             onSubmit={e => this.handleSubmit(e)}
             formValue={this.state.formValue}
