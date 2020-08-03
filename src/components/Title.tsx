@@ -2,9 +2,10 @@ import * as React from 'react'
 
 interface TitleProps {
   title: string
+  color?: string
 }
 
-export const Title: React.FC<TitleProps> = ({ title }) => (
+export const Title: React.FC<TitleProps> = ({ title, color }) => (
   <div
     style={{
       paddingTop: 50,
@@ -14,7 +15,7 @@ export const Title: React.FC<TitleProps> = ({ title }) => (
     <h1
       style={{
         textAlign: 'center',
-        color: '#F9F9F9'
+        color: color ? color : '#F9F9F9'
       }}
     >
       {title}
