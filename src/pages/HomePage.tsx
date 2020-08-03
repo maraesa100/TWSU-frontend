@@ -6,6 +6,7 @@ import React from 'react'
 import RocketLaunch from '../components/RocketLaunch'
 import Title from '../components/Title'
 import PowerComponent from '../components/PowerComponent'
+import MenuBar from '../components/MenuBar'
 
 // Material UI imports
 import Container from '@material-ui/core/Container'
@@ -91,31 +92,7 @@ class HomePage extends React.Component<MyProps, MyState> {
   render() {
     return (
       <div style={{ backgroundColor: '#0077FF' }}>
-        <Navbar className='color-nav justify-content-between'>
-          {/* <Navbar.Brand href='#home'>TWSU</Navbar.Brand> */}
-
-          <img
-            src={require('../ui/twsu-icon-1.png')}
-            width='30'
-            height='30'
-            className='d-inline-block align-top'
-            alt='React Bootstrap logo'
-          />
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
-
-          <Navbar.Brand href='#home'>
-            <img
-              alt=''
-              src='/logo.svg'
-              width='30'
-              height='30'
-              className='d-inline-block align-top'
-            />
-            ROCKET LAUNCHER
-          </Navbar.Brand>
-
-          <Navbar.Brand href='#home'>Help</Navbar.Brand>
-        </Navbar>
+        <MenuBar />
 
         {/* top content container - slighty narrower than launch container */}
         <Container maxWidth='sm'>
