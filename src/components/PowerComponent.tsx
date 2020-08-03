@@ -34,7 +34,7 @@ export const PowerComponent: React.FC<PowerComponentProps> = ({
       </Col>
       <Col xs={12} md={8}>
         <p>Launch a rocket powered by HAPPY WORDS</p>
-        <Button variant='danger'>LAUNCH!!</Button>
+        {/* <Button variant='danger'>LAUNCH!!</Button> */}
       </Col>
     </Row>
   </Container>

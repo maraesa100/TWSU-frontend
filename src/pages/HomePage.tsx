@@ -13,6 +13,7 @@ import StepTwoInstructions from '../components/StepTwoInstructions'
 import StepThreeInstructions from '../components/StepThreeInstructions'
 import SliderFeedback from '../components/SliderFeedback'
 import WordClassifier from '../components/WordClassifier'
+import Image from 'react-bootstrap/Image'
 
 // Material UI imports
 import Container from '@material-ui/core/Container'
@@ -27,6 +28,7 @@ type MyState = {
   happyOrSad: any
   numericalValue: number
   willRocketLaunch: boolean
+  firedRocketAlready: boolean
 }
 
 class HomePage extends React.Component<MyProps, MyState> {
@@ -36,12 +38,17 @@ class HomePage extends React.Component<MyProps, MyState> {
       formValue: '',
       happyOrSad: 'unknown',
       numericalValue: 0,
-      willRocketLaunch: false
+      willRocketLaunch: false,
+      firedRocketAlready: false
     }
   }
 
   handleChange = (event: any) => {
     this.setState({ formValue: event.target.value })
+  }
+
+  fireRocket = (event: any) => {
+    this.setState({ firedRocketAlready: true })
   }
 
   rocketTest() {
@@ -130,6 +137,8 @@ class HomePage extends React.Component<MyProps, MyState> {
             formValue={this.state.formValue}
             handleChange={e => this.handleChange(e)}
             willRocketLaunch={this.state.willRocketLaunch}
+            fireRocket={e => this.fireRocket(e)}
+            firedRocketAlready={this.state.firedRocketAlready}
           />
 
           <SliderFeedback
@@ -147,6 +156,7 @@ class HomePage extends React.Component<MyProps, MyState> {
           />
 
           <WordClassifier category={this.state.happyOrSad} />
+          <div style={{ paddingBottom: 100 }} />
         </Container>
       </div>
     )
