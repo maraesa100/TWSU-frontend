@@ -11,8 +11,9 @@ import Container from '@material-ui/core/Container'
 
 // Bootstrap imports
 
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 type MyProps = {}
 type MyState = {
@@ -90,19 +91,31 @@ class HomePage extends React.Component<MyProps, MyState> {
 
   render() {
     return (
-      <Container maxWidth='sm'>
-        <TitleBar />
-        <RocketLaunch
-          onSubmit={e => this.handleSubmit(e)}
-          formValue={this.state.formValue}
-          handleChange={e => this.handleChange(e)}
-          willRocketLaunch={this.state.willRocketLaunch}
-        />
-        <p>
-          Your words are: {this.state.happyOrSad}{' '}
-          {this.state.happyOrSad === null ? 'unknown' : null}
-        </p>
-      </Container>
+      <div>
+        <Navbar bg='light' expand='lg'>
+          <Navbar.Brand href='#home'>React-Bootstrap</Navbar.Brand>
+          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='mr-auto'>
+              <Nav.Link href='#home'>Home</Nav.Link>
+              <Nav.Link href='#link'>Link</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <Container maxWidth='sm'>
+          <TitleBar />
+          <RocketLaunch
+            onSubmit={e => this.handleSubmit(e)}
+            formValue={this.state.formValue}
+            handleChange={e => this.handleChange(e)}
+            willRocketLaunch={this.state.willRocketLaunch}
+          />
+          <p>
+            Your words are: {this.state.happyOrSad}{' '}
+            {this.state.happyOrSad === null ? 'unknown' : null}
+          </p>
+        </Container>
+      </div>
     )
   }
 }
