@@ -20,22 +20,26 @@ export const RocketLaunch: React.FC<RocketLaunchProps> = ({
 }) => (
   <Container>
     <Row>
-      <Col xs={12} md={12}>
-        <h3>Please Enter Your 'Fuel'</h3>
-      </Col>
       <div style={{ paddingTop: 50 }} />
-      <Col xs={12} md={8} style={{ paddingTop: 25 }}>
+      <Col xs={4} md={6} style={{ paddingTop: 25 }}>
+        <Image
+          src={require('../ui/rocket-launch.jpg')}
+          rounded
+          fluid
+          style={{ padding: 10 }}
+        />
+      </Col>
+
+      <Col xs={8} md={6} style={{ paddingTop: 25 }}>
         <form onSubmit={e => onSubmit(e)}>
           <input
             type='text'
             value={formValue}
             onChange={e => handleChange(e)}
-            placeholder='Please enter text'
+            placeholder='Please enter "Fuel"'
           />
         </form>
-      </Col>
 
-      <Col xs={12} md={4} style={{ paddingTop: 25 }}>
         <Button
           onClick={e => onSubmit(e)}
           disabled={formValue.length < 1}

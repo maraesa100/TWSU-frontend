@@ -11,6 +11,8 @@ import ProgressBar from '../components/ProgressBar'
 import StepOneInstructions from '../components/StepOneInstructions'
 import StepTwoInstructions from '../components/StepTwoInstructions'
 import StepThreeInstructions from '../components/StepThreeInstructions'
+import SliderFeedback from '../components/SliderFeedback'
+import WordClassifier from '../components/WordClassifier'
 
 // Material UI imports
 import Container from '@material-ui/core/Container'
@@ -32,7 +34,7 @@ class HomePage extends React.Component<MyProps, MyState> {
     super(props)
     this.state = {
       formValue: '',
-      happyOrSad: null,
+      happyOrSad: 'unknown',
       numericalValue: 0,
       willRocketLaunch: false
     }
@@ -129,10 +131,22 @@ class HomePage extends React.Component<MyProps, MyState> {
             handleChange={e => this.handleChange(e)}
             willRocketLaunch={this.state.willRocketLaunch}
           />
-          <p>
-            Your words are: {this.state.happyOrSad}{' '}
-            {this.state.happyOrSad === null ? 'unknown' : null}
-          </p>
+
+          <SliderFeedback
+            sliderValue={
+              this.state.happyOrSad === 'happy' ? this.state.numericalValue : 0
+            }
+            sliderLabel={'How Happy?'}
+          />
+
+          <SliderFeedback
+            sliderValue={
+              this.state.happyOrSad === 'sad' ? this.state.numericalValue : 0
+            }
+            sliderLabel={'How Sad?'}
+          />
+
+          <WordClassifier category={this.state.happyOrSad} />
         </Container>
       </div>
     )
