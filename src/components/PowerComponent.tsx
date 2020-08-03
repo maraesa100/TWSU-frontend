@@ -2,6 +2,7 @@ import * as React from 'react'
 import Container from '@material-ui/core/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Image from 'react-bootstrap/Image'
 
 interface PowerComponentProps {
   backgroundColor?: string
@@ -21,7 +22,7 @@ export const PowerComponent: React.FC<PowerComponentProps> = ({
   >
     <Row>
       <Col xs={12} md={4}>
-        <p>icon</p>
+        <Image src={require('../ui/rocket-launch.jpg')} rounded />
       </Col>
       <Col xs={12} md={8}>
         <p>description</p>

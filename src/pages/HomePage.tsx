@@ -92,7 +92,15 @@ class HomePage extends React.Component<MyProps, MyState> {
     return (
       <div style={{ backgroundColor: '#0077FF' }}>
         <Navbar className='color-nav justify-content-between'>
-          <Navbar.Brand href='#home'>TWSU</Navbar.Brand>
+          {/* <Navbar.Brand href='#home'>TWSU</Navbar.Brand> */}
+
+          <img
+            src={require('../ui/twsu-icon-1.png')}
+            width='30'
+            height='30'
+            className='d-inline-block align-top'
+            alt='React Bootstrap logo'
+          />
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
 
           <Navbar.Brand href='#home'>
