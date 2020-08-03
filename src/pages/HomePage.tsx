@@ -105,30 +105,6 @@ class HomePage extends React.Component<MyProps, MyState> {
           handleChange={e => this.handleChange(e)}
           willRocketLaunch={this.state.willRocketLaunch}
         />
-        {/* <h3>Rocket Launcher</h3>
-
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <label>
-            Enter Fuel:
-            <input
-              type='text'
-              value={this.state.formValue}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input
-            type='submit'
-            value='Test'
-            disabled={this.state.formValue.length < 1}
-          />
-        </form>
-
-        <button
-          disabled={!this.state.willRocketLaunch}
-          onClick={() => console.log('launched')}
-        >
-          LAUNCH!!
-        </button> */}
 
         <p>
           Your words are: {this.state.happyOrSad}{' '}
