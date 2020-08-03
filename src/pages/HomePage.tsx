@@ -28,7 +28,7 @@ type MyState = {
   happyOrSad: any
   numericalValue: number
   willRocketLaunch: boolean
-  handleRocketLaunch: boolean
+  firedRocketAlready: boolean
 }
 
 class HomePage extends React.Component<MyProps, MyState> {
@@ -39,7 +39,7 @@ class HomePage extends React.Component<MyProps, MyState> {
       happyOrSad: 'unknown',
       numericalValue: 0,
       willRocketLaunch: false,
-      handleRocketLaunch: false
+      firedRocketAlready: false
     }
   }
 
@@ -47,8 +47,8 @@ class HomePage extends React.Component<MyProps, MyState> {
     this.setState({ formValue: event.target.value })
   }
 
-  handleRocketLaunch = () => {
-    this.setState({ handleRocketLaunch: true })
+  fireRocket = (event: any) => {
+    this.setState({ firedRocketAlready: true })
   }
 
   rocketTest() {
@@ -137,7 +137,7 @@ class HomePage extends React.Component<MyProps, MyState> {
             formValue={this.state.formValue}
             handleChange={e => this.handleChange(e)}
             willRocketLaunch={this.state.willRocketLaunch}
-            // handleRocketLaunch={() => this.handleRocketLaunch()}
+            fireRocket={e => this.fireRocket(e)}
           />
 
           <SliderFeedback
