@@ -5,6 +5,7 @@ import React from 'react'
 // Component Imports
 import RocketLaunch from '../components/RocketLaunch'
 import TitleBar from '../components/TitleBar'
+import Title from '../components/Title'
 
 // Material UI imports
 import Container from '@material-ui/core/Container'
@@ -13,7 +14,6 @@ import Container from '@material-ui/core/Container'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 type MyProps = {}
 type MyState = {
@@ -92,16 +92,24 @@ class HomePage extends React.Component<MyProps, MyState> {
   render() {
     return (
       <div>
-        <Navbar bg='light' expand='lg'>
-          <Navbar.Brand href='#home'>React-Bootstrap</Navbar.Brand>
+        <Navbar className='color-nav justify-content-between'>
+          <Navbar.Brand href='#home'>TWSU</Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='mr-auto'>
-              <Nav.Link href='#home'>Home</Nav.Link>
-              <Nav.Link href='#link'>Link</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
+
+          <Navbar.Brand href='#home'>
+            <img
+              alt=''
+              src='/logo.svg'
+              width='30'
+              height='30'
+              className='d-inline-block align-top'
+            />{' '}
+            ROCKET LAUNCHER
+          </Navbar.Brand>
+
+          <Navbar.Brand href='#home'>Help</Navbar.Brand>
         </Navbar>
+
         <Container maxWidth='sm'>
           <TitleBar />
           <RocketLaunch

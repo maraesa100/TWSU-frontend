@@ -16,3 +16,11 @@ code {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap');
+
+.color-nav {
+  background-color: #f9c000;
+}
+
+.level-1-title {
+  color: 'red';
+}
