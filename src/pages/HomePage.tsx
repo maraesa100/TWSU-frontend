@@ -6,9 +6,13 @@ import React from 'react'
 import RocketLaunch from '../components/RocketLaunch'
 import TitleBar from '../components/TitleBar'
 
+// Material UI imports
+import Container from '@material-ui/core/Container'
+
 // Bootstrap imports
 
-// import { Container } from 'react-bootstrap'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 type MyProps = {}
 type MyState = {
@@ -86,63 +90,19 @@ class HomePage extends React.Component<MyProps, MyState> {
 
   render() {
     return (
-      <div>
+      <Container maxWidth='sm'>
         <TitleBar />
-
-        <h1>Welcome to the Rocket Launcher App</h1>
-        <h2>
-          This rocket runs on happy words, so enter a sentence and get
-          launching!
-        </h2>
-        <h3>Instructions</h3>
-        <ol>
-          <li>Enter a sentence</li>
-          <li>
-            Hit the 'test' button to check whether your rocket has enough happy
-            words to launch
-          </li>
-          <li>
-            If there are enough happy words, the launch button will activate and
-            you will be able to launch your rocket
-          </li>
-        </ol>
-
         <RocketLaunch
           onSubmit={e => this.handleSubmit(e)}
           formValue={this.state.formValue}
           handleChange={e => this.handleChange(e)}
           willRocketLaunch={this.state.willRocketLaunch}
         />
-
         <p>
           Your words are: {this.state.happyOrSad}{' '}
           {this.state.happyOrSad === null ? 'unknown' : null}
         </p>
-        <p>
-          Sentences are considered happy if they contain 50% more happy words
-          than sad words
-        </p>
-        <p>
-          Sentences are considered sad if they contain 50% more sad words than
-          happy words
-        </p>
-        <p>
-          Sentences are considered 'unknown' if they contain any other variety
-          of words
-        </p>
-
-        <h2>Happy Words</h2>
-
-        <h2>Sad Words</h2>
-
-        <h3>For Parents</h3>
-        <p>
-          This tool teaches your child a scientific trial and error process.
-          They are encouraged to try various sentences, use the 'test' button to
-          validate their work, and then once validated they can rest assured
-          that their rocket will launch
-        </p>
-      </div>
+      </Container>
     )
   }
 }
