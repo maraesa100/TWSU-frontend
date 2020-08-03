@@ -1,9 +1,14 @@
 import axios from 'axios'
 import React from 'react'
 // import { string } from 'prop-types'
-// import Container from '@material-ui/core/Container'
+
+// Component Imports
 import RocketLaunch from '../components/RocketLaunch'
-import { thisExpression } from '@babel/types'
+import TitleBar from '../components/TitleBar'
+
+// Bootstrap imports
+
+// import { Container } from 'react-bootstrap'
 
 type MyProps = {}
 type MyState = {
@@ -82,6 +87,8 @@ class HomePage extends React.Component<MyProps, MyState> {
   render() {
     return (
       <div>
+        <TitleBar />
+
         <h1>Welcome to the Rocket Launcher App</h1>
         <h2>
           This rocket runs on happy words, so enter a sentence and get
@@ -99,6 +106,7 @@ class HomePage extends React.Component<MyProps, MyState> {
             you will be able to launch your rocket
           </li>
         </ol>
+
         <RocketLaunch
           onSubmit={e => this.handleSubmit(e)}
           formValue={this.state.formValue}
