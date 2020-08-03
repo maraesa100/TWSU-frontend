@@ -43,11 +43,20 @@ class HomePage extends React.Component<MyProps, MyState> {
       .then(response => {
         console.log('Post successful!')
         console.log(response)
-        this.setState({
-          happyOrSad: response.data.returnedValue.happyOrSad,
-          numericalValue: response.data.returnedValue.numericalValue,
-          willRocketLaunch: true
-        })
+
+        if (response.data.returnedValue.happyOrSad === 'happy') {
+          this.setState({
+            happyOrSad: response.data.returnedValue.happyOrSad,
+            numericalValue: response.data.returnedValue.numericalValue,
+            willRocketLaunch: true
+          })
+        } else {
+          this.setState({
+            happyOrSad: response.data.returnedValue.happyOrSad,
+            numericalValue: response.data.returnedValue.numericalValue,
+            willRocketLaunch: false
+          })
+        }
         return response
       })
       .catch(error => {
