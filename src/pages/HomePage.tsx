@@ -9,6 +9,7 @@ import PowerComponent from '../components/PowerComponent'
 import MenuBar from '../components/MenuBar'
 import ProgressBar from '../components/ProgressBar'
 import WordInstructions from '../components/WordInstructions'
+import StepTwoInstructions from '../components/StepTwoInstructions'
 
 // Material UI imports
 import Container from '@material-ui/core/Container'
@@ -108,6 +109,10 @@ class HomePage extends React.Component<MyProps, MyState> {
             <ProgressBar amountOfProgress={33} stepNumber={1} />
 
             <WordInstructions />
+
+            <ProgressBar amountOfProgress={66} stepNumber={2} />
+
+            <StepTwoInstructions />
 
             <RocketLaunch
               onSubmit={e => this.handleSubmit(e)}

@@ -13,13 +13,15 @@ export const Title: React.FC<ProgressBar> = ({
 }) => (
   <div
     style={{
+      paddingTop: 50,
+
       paddingBottom: 50
     }}
   >
     <ProgressBar
       striped
       variant='danger'
-      label={'Step' + stepNumber}
+      label={'Step ' + stepNumber}
       now={amountOfProgress ? amountOfProgress : 0}
     />
   </div>

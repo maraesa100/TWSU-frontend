@@ -22,7 +22,7 @@ interface WordInstructionsProps {}
 export const WordInstructions: React.FC = ({}) => (
   <Container
     style={{
-      backgroundColor: 'white',
+      backgroundColor: '#F3F4FB',
       paddingTop: 20,
       paddingBottom: 20
     }}
