@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/TWSU-frontend/static/css/main.e2e0483d.chunk.css",
+    "main.js": "/TWSU-frontend/static/js/main.a3deb3db.chunk.js",
+    "main.js.map": "/TWSU-frontend/static/js/main.a3deb3db.chunk.js.map",
+    "runtime-main.js": "/TWSU-frontend/static/js/runtime-main.4caba9ba.js",
+    "runtime-main.js.map": "/TWSU-frontend/static/js/runtime-main.4caba9ba.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/TWSU-frontend/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.c0672b33.chunk.js": "/TWSU-frontend/static/js/2.c0672b33.chunk.js",
+    "static/js/2.c0672b33.chunk.js.map": "/TWSU-frontend/static/js/2.c0672b33.chunk.js.map",
+    "index.html": "/TWSU-frontend/index.html",
+    "precache-manifest.7b02ec6a157e639f67e82ed5f355dfaf.js": "/TWSU-frontend/precache-manifest.7b02ec6a157e639f67e82ed5f355dfaf.js",
+    "service-worker.js": "/TWSU-frontend/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/TWSU-frontend/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.e2e0483d.chunk.css.map": "/TWSU-frontend/static/css/main.e2e0483d.chunk.css.map",
+    "static/js/2.c0672b33.chunk.js.LICENSE.txt": "/TWSU-frontend/static/js/2.c0672b33.chunk.js.LICENSE.txt",
+    "static/media/happy.png": "/TWSU-frontend/static/media/happy.4ddbfee0.png",
+    "static/media/rocket-launch.gif": "/TWSU-frontend/static/media/rocket-launch.61cbc002.gif",
+    "static/media/rocket-launch.jpg": "/TWSU-frontend/static/media/rocket-launch.6abcf3ec.jpg",
+    "static/media/sad.png": "/TWSU-frontend/static/media/sad.8944e885.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4caba9ba.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.c0672b33.chunk.js",
+    "static/css/main.e2e0483d.chunk.css",
+    "static/js/main.a3deb3db.chunk.js"
+  ]
+}
