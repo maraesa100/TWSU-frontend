@@ -25,7 +25,7 @@ export const MenuBar: React.FC = ({}) => (
       ROCKET LAUNCHER
     </Navbar.Brand>
 
-    <Navbar.Brand href='#home'>Help</Navbar.Brand>
+    <Navbar.Brand href='#home'> </Navbar.Brand>
   </Navbar>
 )
 
