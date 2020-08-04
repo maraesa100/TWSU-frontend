@@ -3,6 +3,7 @@ import Container from '@material-ui/core/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
+import Button from 'react-bootstrap/Button'
 
 interface PowerComponentProps {
   backgroundColor?: string
@@ -33,6 +34,7 @@ export const PowerComponent: React.FC<PowerComponentProps> = ({
       </Col>
       <Col xs={12} md={8}>
         <p>Launch a rocket powered by HAPPY WORDS</p>
+        {/* <Button variant='danger'>LAUNCH!!</Button> */}
       </Col>
     </Row>
   </Container>
