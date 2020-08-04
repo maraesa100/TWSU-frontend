@@ -7,9 +7,12 @@ import HomePage from './pages/HomePage'
 
 function App() {
   return (
-    <div>
-      <HomePage />
-    </div>
+    <html>
+      <head></head>
+      <body>
+        <HomePage />
+      </body>
+    </html>
   )
 }
 
